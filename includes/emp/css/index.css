@@ -1,0 +1,53 @@
+/*
+html, body {
+	background-color: #eeeeee;
+}
+*/
+
+.floatleft {
+	float: left;
+}
+.floatright {
+	float: right;
+}
+.clear {
+	clear: both;
+}
+
+.red, .red a, .error {
+	color: #ff0000 !important;
+}
+
+/*
+.container {
+	margin: 10px auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	width: 600px;
+	background-color: white;
+	border: 2px solid #D1D1D1;
+	border-radius: 15px;
+	overflow: hidden;
+}
+*/
+
+.form-group {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.control-label {
+	padding-top: 7px;
+	text-align: right;
+}
+.control-label .asterisk {
+	color: #B94A48;
+}
+
+.form-submit-success, .form-submit-danger {
+	display: none;
+}
+
+.emp-form select.input-sm {
+	height: 30px !important;
+}
