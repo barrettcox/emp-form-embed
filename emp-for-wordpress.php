@@ -1,9 +1,9 @@
 <?php
 /*
- * Plugin Name: EMP for WordPress
+ * Plugin Name: EMP for WP
  * Version: 1.0
  * Plugin URI: http://www.liaisonedu.com/
- * Description: Embed EMP forms into your WordPress pages.
+ * Description: Embeds EMP forms into your WordPress pages.
  * Author: Barrett Cox
  * Author URI: http://www.barrettcox.com/
  * Requires at least: 4.0
