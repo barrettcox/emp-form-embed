@@ -13,32 +13,22 @@ Embeds EMP forms into your WordPress pages.
 
 ## EMP for WordPress Instructions
 
-Installing "EMP for WordPress" can be done either by searching for "EMP for WordPress" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+### Activating the Plugin
 
-1. Download the plugin via WordPress.org
-1. Upload the ZIP file through the 'Plugins > Add New > Upload' screen in your WordPress dashboard
-1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Download on clone this repository and upload it to your /plugins directory.
+2. Go to “Plugins”, and locate the EMP for WordPress plugin.
+3. If the plugin is not activated, click “Activate” to enable it for the site.
+4. You should now now notice an item in the left-hand navigation labeled “EMP Forms”.
 
-## Screenshots
+### Adding a New EMP Form to a Page
 
-1. Description of first screenshot named screenshot-1
-2. Description of second screenshot named screenshot-2
-3. Description of third screenshot named screenshot-3
+1. In the left-hand navigation go to “EMP Forms”.
+2. Click “Add New’.
+3. Give the form a title (can be anything descriptive).
+4. Enter the API Key and the 3-digit Client ID for the form you would like to add (You can get these values from EMP).
+5. Click “Publish” (or “Update”) to save the form.
+6. After saving, you can now copy the shortcode value to the right of where it says “Shortcode”. The shortcode will look something like this:
 
-## Frequently Asked Questions
+`[empforwp pid=”{some integer}”]`
 
-= What is the plugin for? =
-
-This plugin allows you to embed EMP forms into your web pages using a shortcode.
-
-## Changelog
-
-### 1.0
-* 2016-10-11
-* Initial release
-
-## Upgrade Notice
-
-## 1.0
-* 2016-10-11
-* Initial release
+7. Past the shortcode into the editor on any page where you want the EMP form to appear.
