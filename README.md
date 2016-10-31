@@ -7,13 +7,11 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Add EMP forms to your website.
-
 ## Description
 
-Add EMP forms to your website.
+Embeds EMP forms into your WordPress pages.
 
-## Installation
+## EMP for WordPress Instructions
 
 Installing "EMP for WordPress" can be done either by searching for "EMP for WordPress" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
