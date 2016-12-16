@@ -3,11 +3,9 @@
  * Custom Post Types
  */
 
-add_action( 'init', 'my_cpts' );
-
-function my_cpts() {
+function empformembed_cpts() {
 	
-	function empforwp_register_cpt($single_label, $plural_label, $type, $slug, $cap_type, $icon, $heirarchical, $supports, $public, $public_query, $has_archive) {
+	function empformembed_register_cpt($single_label, $plural_label, $type, $slug, $cap_type, $icon, $heirarchical, $supports, $public, $public_query, $has_archive) {
 	
 	$labels = array(
 		'name'               => _x( $plural_label, 'post type general name', 'force5' ),
@@ -47,6 +45,16 @@ function my_cpts() {
 	}
 	
 	//Form Post Type
-	empforwp_register_cpt('EMP Form', 'EMP Forms', 'empforwp_type_form', 'emp', 'post', 'dashicons-welcome-write-blog', true, array( 'title' ), false, false, false );
+	empformembed_register_cpt('EMP Form', 'EMP Forms', 'empformembed_type', 'emp', 'post', 'dashicons-welcome-write-blog', true, array( 'title' ), false, false, false );
 	
+}
+add_action( 'init', 'empformembed_cpts' );
+
+/*
+ * Saves to text file for debugging purposes
+ */
+$file = dirname(__FILE__) . '/debug.txt'; // Place debug.txt in the same directory as this script
+$text = "End of custom_post_types.php \n";
+if(file_exists($file)){
+  file_put_contents($file, $text, FILE_APPEND )or die('<br />Cannot write to file.');
 }

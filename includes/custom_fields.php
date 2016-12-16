@@ -4,24 +4,24 @@
  */
 
 
-function empforwp_add_meta_box() {
+function empformembed_add_meta_box() {
 
   //global $post;
 
-  //if ( get_post_type( $post->ID ) == 'empforwp_type_form' ) {
+  //if ( get_post_type( $post->ID ) == 'empformembed_type' ) {
     add_meta_box(
-      'empforwp_meta_box', // $id
+      'empformembed_meta_box', // $id
       'EMP Form Settings', // $title 
-      'empforwp_show_meta_box', // $callback
-      'empforwp_type_form', // $page
+      'empformembed_show_meta_box', // $callback
+      'empformembed_type', // $page
       'normal', // $context
       'high'); // $priority
   //}
 }
-add_action('add_meta_boxes', 'empforwp_add_meta_box');
+add_action('add_meta_boxes', 'empformembed_add_meta_box');
 
 // Meta Field Array
-$prefix = 'empforwp_';
+$prefix = 'empformembed_';
 $custom_fields = array(     
     
     array(
@@ -40,19 +40,19 @@ $custom_fields = array(
 );
 
 // Inline Content Callback
-function empforwp_show_meta_box() {
+function empformembed_show_meta_box() {
 	global $custom_fields, $post;
 	// Use nonce for verification
-	echo '<input type="hidden" name="empforwp_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
+	echo '<input type="hidden" name="empformembed_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
      
     // Begin the field table and loop
     echo '<table class="form-table">';
 
     // Display the EMP form shortcode
-    if (get_post_type($post->ID) == 'empforwp_type_form') {
+    if (get_post_type($post->ID) == 'empformembed_type') {
     echo '<tr>
             <th>Shortcode</th>
-            <td>[empforwp pid="'.$post->ID.'"]</td>
+            <td>[empformembed pid="'.$post->ID.'"]</td>
           </tr>';
     }
     //echo '<tr><th>Shortcode</th><td>[inline_content post_id='.$post->ID.']</td></tr>';
@@ -98,11 +98,11 @@ function empforwp_show_meta_box() {
 }
 
 // Save the Data
-function empforwp_save_custom_meta($post_id) {
+function empformembed_save_custom_meta($post_id) {
     global $custom_fields;
      
     // verify nonce
-    if (!wp_verify_nonce($_POST['empforwp_meta_box_nonce'], basename(__FILE__))) 
+    if (!wp_verify_nonce($_POST['empformembed_meta_box_nonce'], basename(__FILE__))) 
         return $post_id;
     // check autosave
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
@@ -126,4 +126,4 @@ function empforwp_save_custom_meta($post_id) {
         }
     } // end foreach
 }
-add_action('save_post', 'empforwp_save_custom_meta');
+add_action('save_post', 'empformembed_save_custom_meta');

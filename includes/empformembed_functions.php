@@ -1,22 +1,33 @@
 <?php
-function empforwp_register_styles() {
+
+function empformembed_register_styles() {
+
     // Styles are enqueued when shortcode is added to a page
-    wp_register_style( 'emp_css_reset', plugins_url() . '/emp-for-wordpress/includes/emp/plugins/css-reset/css-reset.css', array(), '1.0.0', all );
-    wp_register_style( 'emp_bootstrap_emp', plugins_url() . '/emp-for-wordpress/includes/emp/plugins/bootstrap/css/bootstrap-emp.min.css', array(), '1.0.0', all );
-    wp_register_style( 'emp_bootstrap_theme_emp', plugins_url() . '/emp-for-wordpress/includes/emp/plugins/bootstrap/css/bootstrap-theme-emp.min.css', array(), '1.0.0', all );
-    wp_register_style( 'emp', plugins_url() . '/emp-for-wordpress/includes/emp/css/index.css', array(), '1.0.0', all );
+    //wp_register_style( 'empformembed_css_reset', plugins_url('/includes/emp/plugins/css-reset/css-reset.css', dirname(__FILE__) ), array(), '1.0.0', all );
+    wp_register_style( 'empformembed_bootstrap_emp', plugins_url('/includes/emp/plugins/bootstrap/css/bootstrap-emp.min.css', dirname(__FILE__) ), array(), '1.0.0', all );
+    wp_register_style( 'empformembed_bootstrap_theme_emp', plugins_url('/includes/emp/plugins/bootstrap/css/bootstrap-theme-emp.min.css', dirname(__FILE__) ), array(), '1.0.0', all );
+    wp_register_style( 'emp', plugins_url('/includes/emp/css/index.css', dirname(__FILE__) ), array(), '1.0.0', all );
 }
-add_action( 'wp_enqueue_scripts', 'empforwp_register_styles' );
+add_action( 'wp_enqueue_scripts', 'empformembed_register_styles' );
 
 // Returns the selected form name from the current post
-function empforwp_get_form_custom_field($pid, $field) {
+function empformembed_get_form_custom_field($pid, $field) {
   $value = get_post_meta( $pid, $field, true );
   $value = ($value ? $value : false);
   return $value;
 }
 
 // Returns the AJAX result for the form submission
-function empforwp_formhandler() {
+function empformembed_formhandler() {
+
+  /*
+   * Saves to text file for debugging purposes
+   */
+  $file = dirname(__FILE__) . '/debug.txt'; // Place debug.txt in the same directory as this script
+  $text = "empformembed_formhandler AJAX call \n";
+  if(file_exists($file)){
+    file_put_contents($file, $text, FILE_APPEND )or die('<br />Cannot write to file.');
+  }
 
   require_once(plugin_dir_path(__FILE__) . 'emp/scripts/config.php');
 
@@ -55,20 +66,9 @@ function empforwp_formhandler() {
         
         $pid     = $_POST['pid'];
         $pid     = intval($pid);
-        $api_key = empforwp_get_form_custom_field($pid, 'empforwp_api_key');
+        $api_key = empformembed_get_form_custom_field($pid, 'empformembed_api_key');
 
-        unset($_POST['pid']);
- 
-        /*
-         * Saves to text file for debugging purposes
-        */
-        
-        $file = dirname(__FILE__).'/debug.txt'; // Place debug.txt in the same directory as this script
-        $text = 'PID 3: '.$pid;
-        if(file_exists($file)){
-        file_put_contents($file, $text, FILE_APPEND )or die('<br />Cannot write to file.');
-        }
-        
+        unset($_POST['pid']);        
         
         $_POST['IQS-API-KEY'] = $api_key;
         
@@ -91,6 +91,15 @@ function empforwp_formhandler() {
           $post_vars[] = $k . '=' . $v;
         }
         $post_vars = implode('&', $post_vars);
+
+        /*
+         * Saves to text file for debugging purposes
+         */
+        $file = dirname(__FILE__) . '/debug.txt'; // Place debug.txt in the same directory as this script
+        $text = "SUBMIT_URL: " . SUBMIT_URL . " \n";
+        if(file_exists($file)){
+          file_put_contents($file, $text, FILE_APPEND )or die('<br />Cannot write to file.');
+        }
         
         $ch = curl_init(SUBMIT_URL);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -123,5 +132,5 @@ function empforwp_formhandler() {
   die();
 }
 
-add_action('wp_ajax_empforwp_formhandler', 'empforwp_formhandler');
-add_action('wp_ajax_nopriv_empforwp_formhandler', 'empforwp_formhandler');
+add_action('wp_ajax_empformembed_formhandler', 'empformembed_formhandler');
+add_action('wp_ajax_nopriv_empformembed_formhandler', 'empformembed_formhandler');

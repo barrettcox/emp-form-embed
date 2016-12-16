@@ -1,20 +1,16 @@
-/*
-html, body {
-	background-color: #eeeeee;
-}
-*/
-
-.floatleft {
+.emp-form .floatleft {
 	float: left;
 }
-.floatright {
+.emp-form .floatright {
 	float: right;
 }
-.clear {
+.emp-form .clear {
 	clear: both;
 }
 
-.red, .red a, .error {
+.emp-form .red,
+.emp-form .red a,
+.emp-form .error {
 	color: #ff0000 !important;
 }
 
@@ -31,23 +27,23 @@ html, body {
 }
 */
 
-.form-group {
+.emp-form .form-group {
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
 
-.control-label {
+.emp-form .control-label {
 	padding-top: 7px;
 	text-align: right;
 }
-.control-label .asterisk {
+.emp-form .control-label .emp-form .asterisk {
 	color: #B94A48;
 }
 
-.form-submit-success, .form-submit-danger {
+.emp-form .form-submit-success, .emp-form .form-submit-danger {
 	display: none;
 }
 
-.emp-form select.input-sm {
+.emp-form .emp-form select.input-sm {
 	height: 30px !important;
 }

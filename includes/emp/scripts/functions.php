@@ -44,7 +44,7 @@ function getFormFromSpectrumEMPAPI($spectrum_emp_api_key) {
 	}
 	
 	//$html .= '<form id="form_example" action="scripts/formhandler.php" method="post">';
-	$html .= '<form id="form_example" action="'.plugins_url().'/emp-for-wordpress/includes/emp/scripts/formhandler.php" method="post">';
+	$html .= '<form id="form_example" action="' . plugins_url('/scripts/formhandler.php', dirname(__FILE__) ) . '" method="post">';
 	
 	foreach ($json->data->sections as $section_index => $section) {
 		$html .= '

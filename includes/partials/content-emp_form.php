@@ -65,18 +65,18 @@ $form = getFormFromSpectrumEMPAPI($config['SpectrumEMPAPIKey']);
 </script>
     
 <!-- resources -->
-<!--<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/plugins/jquery/jquery.js?<?= $cache ?>"></script>-->
-<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/plugins/jquery/jquery-ui.js?<?= $cache ?>"></script>
-<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/plugins/jquery/jquery-masked.js?<?= $cache ?>"></script>
-<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/plugins/jquery/jquery-pubsub.js?<?= $cache ?>"></script>
-<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/plugins/iqs/validate.js?<?= $cache ?>"></script>
+<!--<script type="text/javascript" src="<?php //echo dirname(plugin_dir_path(__FILE__)); ?>/includes/emp/plugins/jquery/jquery.js?<?= $cache ?>"></script>-->
+<script type="text/javascript" src="<?php echo plugins_url('/emp/plugins/jquery/jquery-ui.js?' . $cache, dirname(__FILE__) ); ?>"></script>
+<script type="text/javascript" src="<?php echo plugins_url('/emp/plugins/jquery/jquery-masked.js?' . $cache, dirname(__FILE__) ); ?>"></script>
+<script type="text/javascript" src="<?php echo plugins_url('/emp/plugins/jquery/jquery-pubsub.js?' . $cache, dirname(__FILE__) ); ?>"></script>
+<script type="text/javascript" src="<?php echo plugins_url('/emp/plugins/iqs/validate.js?' . $cache, dirname(__FILE__) ); ?>"></script>
 
 <!-- page specific -->
-<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/js/field_rules_form_library.js?<?= $cache ?>"></script>
-<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/js/field_rules_handler.js?<?= $cache ?>"></script>
-<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/js/index.js?<?= $cache ?>"></script>
+<script type="text/javascript" src="<?php echo plugins_url('/emp/js/field_rules_form_library.js?' . $cache, dirname(__FILE__) ); ?>"></script>
+<script type="text/javascript" src="<?php echo plugins_url('/emp/js/field_rules_handler.js?' . $cache, dirname(__FILE__) ); ?>"></script>
+<script type="text/javascript" src="<?php echo plugins_url('/emp/js/index.js?' . $cache, dirname(__FILE__) ); ?>"></script>
 
-<script type="text/javascript" src="<?php echo plugins_url(); ?>/emp-for-wordpress/includes/emp/plugins/bootstrap/js/bootstrap.min.js?<?= $cache ?>"></script>
+<script type="text/javascript" src="<?php echo plugins_url('/emp/plugins/bootstrap/js/bootstrap.min.js?' . $cache, dirname(__FILE__) ); ?>"></script>
 
 <script>
   SITE.data = {

@@ -33,7 +33,7 @@
 					
 					//$.post('scripts/formhandler.php', $form.serialize(), function(r) {
 
-					$.post('/wp-admin/admin-ajax.php?action=empforwp_formhandler', $form_params, function(r) {
+					$.post('/wp-admin/admin-ajax.php?action=empformembed_formhandler', $form_params, function(r) {
 
 						console.log('Data: '+r.data);
 						

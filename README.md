@@ -1,9 +1,9 @@
-# EMP for WordPress
+# EMP Form Embed
 Contributors: barrettcox
 Tags: wordpress, plugin, template
-Requires at least: 3.9
-Tested up to: 4.0
-Stable tag: 1.0
+Requires at least: 4.0
+Tested up to: 4.6.1
+Stable tag: 0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Embeds EMP forms into your WordPress pages.
 
-## EMP for WordPress Instructions
+## EMP Form Embed Instructions
 
 ### Activating the Plugin
 
@@ -29,6 +29,6 @@ Embeds EMP forms into your WordPress pages.
 5. Click “Publish” (or “Update”) to save the form.
 6. After saving, you can now copy the shortcode value to the right of where it says “Shortcode”. The shortcode will look something like this:
 
-`[empforwp pid=”{some integer}”]`
+`[empformembed pid=”{some integer}”]`
 
 7. Past the shortcode into the editor on any page where you want the EMP form to appear.
