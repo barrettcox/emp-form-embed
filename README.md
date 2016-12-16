@@ -31,4 +31,4 @@ Embeds EMP forms into your WordPress pages.
 
 `[empformembed pid=”{some integer}”]`
 
-7. Past the shortcode into the editor on any page where you want the EMP form to appear.
+7. Paste the shortcode into the editor on any page where you want the EMP form to appear.
