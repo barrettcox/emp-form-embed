@@ -26,21 +26,28 @@
 				
 				onSuccess: function($form) {
 					
-					var $sb  = $form.find('.btn-primary').html('Submitting...').attr('disabled', 'disabled'),
-					    $pid = $('.emp-form').attr('data-pid'),
-					    $form_params = $form.serialize();
-				        $form_params += '&pid='+$pid;
+					var sb  = $form.find('.btn-primary').html('Submitting...').attr('disabled', 'disabled'),
+					    pid = $('.emp-form').attr('data-pid'),
+					    form_params = $form.serialize();
+				      
+				      form_params += '&pid='+pid;
 					
 					//$.post('scripts/formhandler.php', $form.serialize(), function(r) {
 
-					$.post('/wp-admin/admin-ajax.php?action=empformembed_formhandler', $form_params, function(r) {
+					$.post('/wp-admin/admin-ajax.php?action=empformembed_formhandler', form_params, function(r) {
 
 						console.log('Data: '+r.data);
 						
 						if (r.status == 1) {
 							$('.form-submit-danger').hide();
 							$('.form-submit-success').html(r.response).show();
-							window.location.href = r.data;
+
+							if (r.new_tab == 1) {
+							  window.open(r.data, '_blank');
+							}
+							else {
+							  window.location.href = r.data;
+							}
 							
 						} else {
 							var message = r.response;
@@ -55,7 +62,7 @@
 								
 							}
 							$('.form-submit-danger').html(message).show();
-							$sb.html('Go <i class="icon-chevron-right icon-white"></i>').removeAttr('disabled');
+							sb.html('Go <i class="icon-chevron-right icon-white"></i>').removeAttr('disabled');
 							
 						}
 						

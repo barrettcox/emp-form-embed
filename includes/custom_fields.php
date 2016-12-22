@@ -36,6 +36,12 @@ $custom_fields = array(
       'desc'  => 'Enter the Client ID for the EMP form.',
       'id'    => $prefix.'client_id',
       'type'  => 'text',
+    ),
+
+    array(
+      'label' => 'Display "Thank You" page in a new window',
+      'id'    => $prefix.'new_tab',
+      'type'  => 'checkbox',
     )
 );
 

@@ -20,15 +20,6 @@ function empformembed_get_form_custom_field($pid, $field) {
 // Returns the AJAX result for the form submission
 function empformembed_formhandler() {
 
-  /*
-   * Saves to text file for debugging purposes
-   */
-  $file = dirname(__FILE__) . '/debug.txt'; // Place debug.txt in the same directory as this script
-  $text = "empformembed_formhandler AJAX call \n";
-  if(file_exists($file)){
-    file_put_contents($file, $text, FILE_APPEND )or die('<br />Cannot write to file.');
-  }
-
   require_once(plugin_dir_path(__FILE__) . 'emp/scripts/config.php');
 
   $return = array();
@@ -67,6 +58,7 @@ function empformembed_formhandler() {
         $pid     = $_POST['pid'];
         $pid     = intval($pid);
         $api_key = empformembed_get_form_custom_field($pid, 'empformembed_api_key');
+        $new_tab = empformembed_get_form_custom_field($pid, 'empformembed_new_tab');
 
         unset($_POST['pid']);        
         
@@ -115,6 +107,7 @@ function empformembed_formhandler() {
       
         $json = json_decode($raw_html);
         
+        $return['new_tab'] = $new_tab ? 1 : 0;
         $return['status'] = (isset($json->status) && $json->status == 'success') ? 1 : 0;
         $return['response'] = (isset($json->message)) ? $json->message : 'Something bad happened, please refresh the page and try again.';
         $return['data'] = (isset($json->data)) ? $json->data : '';
