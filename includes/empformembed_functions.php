@@ -83,15 +83,6 @@ function empformembed_formhandler() {
           $post_vars[] = $k . '=' . $v;
         }
         $post_vars = implode('&', $post_vars);
-
-        /*
-         * Saves to text file for debugging purposes
-         */
-        $file = dirname(__FILE__) . '/debug.txt'; // Place debug.txt in the same directory as this script
-        $text = "SUBMIT_URL: " . SUBMIT_URL . " \n";
-        if(file_exists($file)){
-          file_put_contents($file, $text, FILE_APPEND )or die('<br />Cannot write to file.');
-        }
         
         $ch = curl_init(SUBMIT_URL);
         curl_setopt($ch, CURLOPT_POST, 1);
