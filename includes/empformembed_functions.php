@@ -72,6 +72,7 @@ function empformembed_formhandler() {
         
         $post_vars = array();
         foreach ($_POST as $k => $v) {
+          
           if (in_array($k, $phone_fields)) {
             $v = preg_replace('/[^0-9]/', '', $v);
             $v = '%2B1' . $v;   // append +1 for US, but + needs to be %2B for posting
@@ -80,8 +81,20 @@ function empformembed_formhandler() {
           if (stripos($k, '-text-opt-in') !== false) {
             $v = '1';
           }
+
+          // Remove backslashes if any exist
+          if (strpos($v, '\\') !== false) {
+            $v = stripslashes($v);
+          }
+
+          // URL encode if spaces exist
+          if (strpos($v, ' ') !== false) {
+            $v = rawurlencode($v);
+          }
+
           $post_vars[] = $k . '=' . $v;
         }
+
         $post_vars = implode('&', $post_vars);
         
         $ch = curl_init(SUBMIT_URL);

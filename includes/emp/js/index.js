@@ -36,8 +36,6 @@
 
 					$.post('/wp-admin/admin-ajax.php?action=empformembed_formhandler', form_params, function(r) {
 
-						console.log('Data: '+r.data);
-						
 						if (r.status == 1) {
 							$('.form-submit-danger').hide();
 							$('.form-submit-success').html(r.response).show();
@@ -53,13 +51,14 @@
 							var message = r.response;
 							$('.form-submit-success').hide();
 							if (message.toLowerCase().indexOf('already exist') >= 0) {
-								message = 'Oops, we already have you in EMP. Either use a different email address or <a href="'+r.data+'">go to your personal page</a>.';
-							} else if (message.toLowerCase().indexOf('incomplete or invalid') >= 0) {
+								message = 'You&rsquo;re already subscribed to ExploreHealthCareers. Sign up with a different email address or <a href="'+r.data+'">click here</a> to return to the site.';
+							} else if (message.toLowerCase().indexOf('invalid') >= 0) {
+								message += '<ul>';
 								$.each(r.data, function (i, item) {
-									message += '<br />' + item.displayName;
+									message += '<li>' + item.displayName + ': ' + item.description + '</li>';
 									$('#' + item.id).parents('div.control-group').addClass('error');
 								});
-								
+								message += '</ul>';
 							}
 							$('.form-submit-danger').html(message).show();
 							sb.html('Go <i class="icon-chevron-right icon-white"></i>').removeAttr('disabled');
